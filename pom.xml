@@ -98,28 +98,28 @@
           </execution>
         </executions>
       </plugin>
-      <!--<plugin>-->
-        <!--<groupId>com.github.github</groupId>-->
-        <!--<artifactId>site-maven-plugin</artifactId>-->
-        <!--<version>0.9</version>-->
-        <!--<configuration>-->
-          <!--<message>Maven artifacts for ${project.version}</message>-->
-          <!--<noJekyll>true</noJekyll>-->
-          <!--<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>-->
-          <!--<branch>refs/heads/mvn-repo</branch>-->
-          <!--<includes><include>**/*</include></includes>-->
-          <!--<repositoryName>scribe-java</repositoryName>-->
-          <!--<repositoryOwner>fernandezpablo85</repositoryOwner>-->
-        <!--</configuration>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<goals>-->
-              <!--<goal>site</goal>-->
-            <!--</goals>-->
-            <!--<phase>deploy</phase>-->
-          <!--</execution>-->
-        <!--</executions>-->
-        <!--</plugin>-->
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.9</version>
+        <configuration>
+          <message>Maven artifacts for ${project.version}</message>
+          <noJekyll>true</noJekyll>
+          <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+          <branch>refs/heads/mvn-repo</branch>
+          <includes><include>**/*</include></includes>
+          <repositoryName>scribe-java</repositoryName>
+          <repositoryOwner>chaitanya0bhagvan</repositoryOwner>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>deploy</phase>
+          </execution>
+        </executions>
+        </plugin>
         <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
