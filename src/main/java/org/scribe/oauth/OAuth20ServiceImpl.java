@@ -6,6 +6,7 @@ import org.scribe.model.*;
 public class OAuth20ServiceImpl implements OAuthService
 {
   private static final String VERSION = "2.0";
+  private static final String GRANT_TYPE = "grant_type";
   
   private final DefaultApi20 api;
   private final OAuthConfig config;
@@ -33,6 +34,16 @@ public class OAuth20ServiceImpl implements OAuthService
     request.addQuerystringParameter(OAuthConstants.CODE, verifier.getValue());
     request.addQuerystringParameter(OAuthConstants.REDIRECT_URI, config.getCallback());
     if(config.hasScope()) request.addQuerystringParameter(OAuthConstants.SCOPE, config.getScope());
+
+    if(api.getAccessTokenVerb().equals(Verb.POST)){
+      request.addBodyParameter(GRANT_TYPE, api.getGrantType());
+      request.addBodyParameter(OAuthConstants.CLIENT_ID, config.getApiKey());
+      request.addBodyParameter(OAuthConstants.CLIENT_SECRET, config.getApiSecret());
+      request.addBodyParameter(OAuthConstants.CODE, verifier.getValue());
+      request.addBodyParameter(OAuthConstants.REDIRECT_URI, config.getCallback());
+      if(config.hasScope()) request.addBodyParameter(OAuthConstants.SCOPE, config.getScope());
+    }
+
     Response response = request.send();
     return api.getAccessTokenExtractor().extract(response.getBody());
   }

@@ -67,4 +67,12 @@ public abstract class DefaultApi20 implements Api
     return new OAuth20ServiceImpl(this, config);
   }
 
+
+  /**
+   * Returns the grant type for this api. Default is authorization_code.
+   * This api is only used when getAccessTokenVerb is Verb.POST
+   * @return
+   */
+  public String getGrantType() { return "authorization_code"; }
+
 }
